@@ -4,8 +4,6 @@ kind: Job
 metadata:
   name: cleanup-job
   annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
@@ -14,4 +12,5 @@ spec:
         image: alpine:3.12
         command: ["/bin/sh", "-c", "echo 'Running Cleanup Job...' && sleep 10 && echo 'Cleanup Complete.'"]
       restartPolicy: Never
+
   backoffLimit: 2
